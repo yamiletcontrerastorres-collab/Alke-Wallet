@@ -50,7 +50,6 @@ $(document).ready(function () {
     });
   }
 
-
   function getTipoTransaccion(tipo) {
     switch (tipo) {
       case "compra": return "Compra";
