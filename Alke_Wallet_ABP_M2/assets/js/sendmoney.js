@@ -1,8 +1,5 @@
 $(function () {
-
-  // =========================
   // CARGAR CONTACTOS
-  // =========================
   function cargarContactos(filtro = "") {
     let contactos = JSON.parse(localStorage.getItem("contactos")) || [];
 
@@ -23,17 +20,12 @@ $(function () {
   }
 
   cargarContactos();
-
-  // =========================
   // FILTRO (datalist)
-  // =========================
   $("#exampleDataList").on("input", function () {
     cargarContactos($(this).val());
   });
 
-  // =========================
   // GUARDAR CONTACTO (modal)
-  // =========================
   $("#contactForm").on("submit", function (e) {
     e.preventDefault();
 
@@ -56,14 +48,12 @@ $(function () {
     $("#alert-container").html(`<div class="alert alert-success">✅ Contacto agregado correctamente</div>`);
 
     $("#contactForm")[0].reset();
-    $("#modalContact").addClass("hidden");
+    $("#modalContact").addClass("hidden"); // cerrar modal
 
     cargarContactos($("#exampleDataList").val());
   });
 
-  // =========================
   // VALIDAR BOTÓN TRANSFERIR
-  // =========================
   function validarBotonTransferir() {
     let contactoSeleccionado = $("#contacto").val();
     let monto = Number($("#montoTransferencia").val());
@@ -84,9 +74,7 @@ $(function () {
   $("#contacto").on("change", validarBotonTransferir);
   $("#montoTransferencia").on("input", validarBotonTransferir);
 
-  // =========================
   // TRANSFERIR
-  // =========================
   $("#sendForm").on("submit", function (e) {
     e.preventDefault();
 
@@ -122,7 +110,8 @@ $(function () {
     });
     localStorage.setItem("movimientos", JSON.stringify(movimientos));
 
-    $("#alert-container").html(`<div class="alert alert-success">✅ Transferencia realizada con éxito</div>`).hide().fadeIn(400).delay(2000).slideUp(400);
+    $("#alert-container").html(`<div class="alert alert-success">✅ Transferencia realizada con éxito</div>`)
+      .hide().fadeIn(400).delay(2000).slideUp(400);
     $("#montoTransferencia").val("");
 
     setTimeout(() => {
@@ -130,15 +119,13 @@ $(function () {
     }, 1500);
   });
 
-});
+  // ABRIR / CERRAR MODAL
+  $("#btnAddContact").on("click", function () {
+    $("#modalContact").removeClass("hidden").css("display", "flex");
+  });
 
-// =========================
-// ABRIR / CERRAR MODAL
-// =========================
-$("#btnAddContact").on("click", function () {
-  $("#modalContact").removeClass("hidden");
-});
+  $("#cerrarModal").on("click", function () {
+    $("#modalContact").addClass("hidden").css("display", "none");
+  });
 
-$("#cerrarModal").on("click", function () {
-  $("#modalContact").addClass("hidden");
 });
