@@ -1,0 +1,2 @@
+# Proyecto_Alke-_Wallet
+Alke Wallet es una billetera digital desarrollada como proyecto Front-end que permite a los usuarios gestionar sus finanzas de manera sencilla. Incluye autenticación de usuarios, visualización de saldo, historial de transacciones, búsqueda de contactos y envío de dinero mediante una interfaz moderna, responsiva y fácil de utilizar, construida con HTML, CSS, Bootstrap y JavaScript.
